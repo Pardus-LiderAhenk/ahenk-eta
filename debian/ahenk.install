@@ -1,7 +1,7 @@
+ahenk.service lib/systemd/system/ahenk.service
 etc/ahenk/ahenk.conf
 etc/ahenk/log.conf
 etc/init.d/ahenk
-lib/systemd/system/ahenk.service
 usr/share/ahenk/ahenkd.py
 usr/share/ahenk/api/service/ps_util.py
 usr/share/ahenk/base/agreement/agreement.py
