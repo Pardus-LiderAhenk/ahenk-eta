@@ -1,3 +1,9 @@
+ahenk (1.1.2) unstable; urgency=medium
+
+  * update ahenk.install
+
+ -- Yunusemre Şentürk <yunusemre.senturk@pardus.org.tr>  Wed, 21 Nov 2018 11:57:35 +0300
+
 ahenk (1.1.1) unstable; urgency=medium
 
   * Add dh-systemd to build depends
