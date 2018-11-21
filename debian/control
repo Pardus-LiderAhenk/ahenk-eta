@@ -19,10 +19,7 @@ Depends: ${misc:Depends},
          python3-sleekxmpp,
          python3-watchdog,
          python3-easygui,
-         libpam-script,
-         ahenk-script,
-         ahenk-package-manager,
-         ahenk-resource-usage
+         libpam-script
 Description: The client side of the Lider Ahenk Project
  Lider Ahenk is an open source project which provides solutions
  to manage, monitor and audit unlimited number of different 
