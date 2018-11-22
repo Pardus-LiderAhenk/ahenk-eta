@@ -1,5 +1,5 @@
 [Unit]
-Description=Starts Ahenk at system startup
+Description=Ahenk agent systemd unit
 After=network.target
 
 [Service]

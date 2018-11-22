@@ -3,7 +3,7 @@ Section: utils
 Priority: optional
 Maintainer: İsmail Başaran <ismail.basaran@tubitak.gov.tr>
 Uploaders: Yunusemre Şentürk <yunusemre.senturk@pardus.org.tr>
-Build-Depends: debhelper (>=9), dh-python, dh-systemd, python3-all
+Build-Depends: debhelper (>=9), dh-systemd
 Standards-Version: 3.9.8
 Homepage: http://www.liderahenk.org.tr
 X-Python3-Version: >= 3.2
