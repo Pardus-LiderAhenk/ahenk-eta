@@ -146,30 +146,21 @@ class AhenkDaemon(BaseDaemon):
 
     def check_registration(self):
         """ docstring"""
-        # max_attempt_number = int(System.Hardware.Network.interface_size()) * 3
-        max_attempt_number = 1
+        max_attempt_number = int(System.Hardware.Network.interface_size()) * 3
         # self.logger.debug()
         # logger = Scope.getInstance().getLogger()
         registration = Scope.get_instance().get_registration()
 
         try:
-            #if registration.is_registered() is False:
-            #    self.logger.debug('Ahenk is not registered. Attempting for registration')
-            #    if registration.registration_request() == False:
-            #        self.registration_failed()
-
-            if registration.is_registered() is False:
-                print("Registation attemp")
+            while registration.is_registered() is False:
                 max_attempt_number -= 1
                 self.logger.debug('Ahenk is not registered. Attempting for registration')
                 registration.registration_request()
-
-                #if max_attempt_number < 0:
-                #    self.logger.warning('Number of Attempting for registration is over')
-                #    self.registration_failed()
-                #    break
+                if max_attempt_number < 0:
+                    self.logger.warning('Number of Attempting for registration is over')
+                    self.registration_failed()
+                    break
         except Exception as e:
-            self.registration_failed()
             self.logger.error('Registration failed. Error message: {0}'.format(str(e)))
 
 
@@ -240,6 +231,29 @@ class AhenkDaemon(BaseDaemon):
         Util.create_file(System.Ahenk.fifo_file())
         Util.set_permission(System.Ahenk.fifo_file(), '600')
 
+    def disable_local_users(self):
+
+        self.logger.info('Local users disable action start..')
+        conf_manager = Scope.get_instance().get_configuration_manager()
+
+        if conf_manager.has_section('MACHINE'):
+            user_disabled = conf_manager.get("MACHINE", "user_disabled")
+            self.logger.info('User disabled value=' + str(user_disabled))
+            if user_disabled == '0':
+                self.logger.info('local user disabling')
+                Scope.get_instance().get_registration().disable_local_users()
+
+                conf_manager.set('MACHINE', 'user_disabled', '1')
+
+                with open('/etc/ahenk/ahenk.conf', 'w') as configfile:
+                    self.logger.info('oepning config file ')
+                    conf_manager.write(configfile)
+
+                user_disabled = conf_manager.get("MACHINE", "user_disabled")
+                self.logger.info('User succesfully disabled value=' + str(user_disabled))
+            else:
+                self.logger.info('users already disabled')
+
     def run(self):
         """ docstring"""
         print('Ahenk running...')
@@ -287,27 +301,9 @@ class AhenkDaemon(BaseDaemon):
 
         self.check_registration()
 
-        self.is_registered()
+        #self.is_registered()
 
-        conf_manager= global_scope.get_configuration_manager()
-
-        if conf_manager.has_section('MACHINE'):
-            user_disabled = conf_manager.get("MACHINE", "user_disabled")
-            self.logger.info('User disabled value='+ str(user_disabled))
-            if user_disabled == '0':
-                self.logger.info('local user disabling')
-                global_scope.get_registration().disable_local_users()
-
-                conf_manager.set('MACHINE', 'user_disabled', '1')
-
-                with open('/etc/ahenk/ahenk.conf', 'w') as configfile:
-                    self.logger.info('oepning config file ')
-                    conf_manager.write(configfile)
-
-                user_disabled = conf_manager.get("MACHINE", "user_disabled")
-                self.logger.info('User succesfully disabled value=' + str(user_disabled))
-            else :
-                self.logger.info('users already disabled')
+        #self.disable_local_users()
 
         #self.logger.info('Ahenk was registered')
 

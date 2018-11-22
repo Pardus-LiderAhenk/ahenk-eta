@@ -332,10 +332,8 @@ class Util:
             Util.execute('export DISPLAY={0}; su - {1} -c \'{2}\''.format(display, user, inner_command))
 
     @staticmethod
-    def show_message(message, title=""):
+    def show_message(username,display=':0',message='', title=''):
         ask_path = '/usr/share/ahenk/base/agreement/confirm.py'
-        display= ":0"
-        username= os.getlogin()
         try:
 
             if username is not None:
@@ -354,14 +352,14 @@ class Util:
 
             else:
                 return None
-        except Exception:
-            return None
+        except Exception as e :
+            print("Error when showing message " + str(e))
+
+            return None;
 
     @staticmethod
     def show_registration_message(login_user_name,message,title,host=None):
-
         ask_path = '/usr/share/ahenk/base/agreement/ahenkmessage.py'
-
         display_number = ":0"
 
         if host is None:
@@ -377,14 +375,12 @@ class Util:
 
         pout = str(p_out).replace('\n', '')
 
-        return pout\
+        return pout
 
     @staticmethod
-    def show_unregistration_message(login_user_name,message,title):
+    def show_unregistration_message(login_user_name,display_number,message,title):
 
         ask_path = '/usr/share/ahenk/base/agreement/unregistrationmessage.py'
-
-        display_number = ":0"
 
         command = 'export DISPLAY={0}; su - {1} -c \"python3 {2} \'{3}\' \'{4}\' \"'.format(display_number,
                                                                                                         login_user_name,
