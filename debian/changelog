@@ -1,3 +1,9 @@
+ahenk (1.1.5) unstable; urgency=medium
+
+  * Update source according to eta project
+
+ -- Yunusemre Şentürk <yunusemre.senturk@pardus.org.tr>  Thu, 22 Nov 2018 11:38:31 +0300
+
 ahenk (1.1.4) unstable; urgency=medium
 
   * Add lograte for ahenk.log
