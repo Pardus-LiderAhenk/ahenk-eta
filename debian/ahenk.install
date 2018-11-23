@@ -1,4 +1,3 @@
-ahenk.service lib/systemd/system/
 etc/ahenk/ahenk.conf
 etc/ahenk/log.conf
 etc/init.d/ahenk
