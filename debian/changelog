@@ -1,3 +1,9 @@
+ahenk (1.1.8) unstable; urgency=medium
+
+  * Move service unit file into debian
+
+ -- Yunusemre Şentürk <yunusemre.senturk@pardus.org.tr>  Fri, 23 Nov 2018 10:49:26 +0300
+
 ahenk (1.1.7) unstable; urgency=medium
 
   * Update rules, control file and change service unit file
