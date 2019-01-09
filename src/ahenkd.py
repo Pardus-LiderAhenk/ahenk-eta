@@ -146,7 +146,8 @@ class AhenkDaemon(BaseDaemon):
 
     def check_registration(self):
         """ docstring"""
-        max_attempt_number = int(System.Hardware.Network.interface_size()) * 3
+        #max_attempt_number = int(System.Hardware.Network.interface_size()) * 3
+        max_attempt_number = 1
         # self.logger.debug()
         # logger = Scope.getInstance().getLogger()
         registration = Scope.get_instance().get_registration()
