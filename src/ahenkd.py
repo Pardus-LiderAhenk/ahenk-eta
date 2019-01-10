@@ -146,10 +146,7 @@ class AhenkDaemon(BaseDaemon):
 
     def check_registration(self):
         """ docstring"""
-        #max_attempt_number = int(System.Hardware.Network.interface_size()) * 3
-        max_attempt_number = 1
-        # self.logger.debug()
-        # logger = Scope.getInstance().getLogger()
+        max_attempt_number = int(System.Hardware.Network.interface_size())
         registration = Scope.get_instance().get_registration()
 
         try:
@@ -159,11 +156,10 @@ class AhenkDaemon(BaseDaemon):
                 registration.registration_request()
                 if max_attempt_number < 0:
                     self.logger.warning('Number of Attempting for registration is over')
-                    self.registration_failed()
+                    Util.execute("/etc/init.d/ahenk stop")
                     break
         except Exception as e:
             self.logger.error('Registration failed. Error message: {0}'.format(str(e)))
-
 
     def is_registered(self):
         try:
