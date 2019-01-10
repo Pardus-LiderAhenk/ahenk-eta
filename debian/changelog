@@ -2,7 +2,7 @@ ahenk (1.1.9) unstable; urgency=medium
 
   * registration counter added and stop ahenk service after this counter
 
- -- Tuncay ÇOLAK <tuncay.colak@tubitak.gov.tr>  Thu, 10 Jan 2019 14:04:28 +0300
+ -- Tuncay ÇOLAK <tcolak@localhost.localdomain>  Thu, 10 Jan 2019 14:07:27 +0300
 
 ahenk (1.1.8) unstable; urgency=medium
 
