@@ -1,3 +1,9 @@
+ahenk (1.1.10) unstable; urgency=medium
+
+  * updated receiverresource in ahenk.conf
+
+ -- Tuncay ÇOLAK <tuncay.colak@tubitak.gov.tr>  Thu, 10 Jan 2019 14:07:27 +0300
+
 ahenk (1.1.9) unstable; urgency=medium
 
   * registration counter added and stop ahenk service after this counter
