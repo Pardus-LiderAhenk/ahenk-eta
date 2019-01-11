@@ -411,10 +411,11 @@ class ExecutionManager(object):
             # Util.show_message(user_name,display,'Ahenk Lider MYS sisteminden çıkarmak için yetkili kullanıcı haklarına sahip olmanız gerekmektedir.',
             #        'Kullanıcı Yetkilendirme Hatası')
         else:
-            Util.show_message(user_name, display, "Ahenk Lider MYS sisteminden çıkarılmıştır.", "")
-            if Util.show_message(user_name, display, "Değişikliklerin etkili olması için sistemi yeniden başlatmanız gerekmektedir.", "") :
-                registration= Scope.get_instance().get_registration()
-                registration.purge_and_unregister()
+            self.logger.info("Successfuly registration")
+            # Util.show_message(user_name, display, "Ahenk Lider MYS sisteminden çıkarılmıştır.", "")
+            # if Util.show_message(user_name, display, "Değişikliklerin etkili olması için sistemi yeniden başlatmanız gerekmektedir.", "") :
+            #     registration= Scope.get_instance().get_registration()
+            #     registration.purge_and_unregister()
 
 
     def json_to_task_bean(self, json_data, file_server_conf=None):
